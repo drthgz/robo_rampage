@@ -2,8 +2,8 @@ extends CharacterBody3D
 
 # Simple third-person controller used while following the Udemy Godot 4 course.
 const SPEED = 5.0
-const JUMP_VELOCITY = 4.5
 
+@export var jum_height: float = 1.0
 # Pull gravity from project settings so tweaks stay centralized.
 var gravity: float = ProjectSettings.get_setting("physics/3d/default_gravity")
 # Accumulates per-frame mouse delta to rotate player + camera.
@@ -24,7 +24,7 @@ func _physics_process(delta: float) -> void:
 
 	# Handle jump.
 	if Input.is_action_just_pressed("jump") and is_on_floor():
-		velocity.y = JUMP_VELOCITY
+		velocity.y = sqrt(jum_height * 2.0 * gravity)
 
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.

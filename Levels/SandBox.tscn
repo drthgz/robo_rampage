@@ -31,3 +31,6 @@ size = Vector3(64, 1, 64)
 
 [node name="Player" parent="." instance=ExtResource("1_gilti")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.216051, 0.5, 0)
