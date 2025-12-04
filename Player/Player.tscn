@@ -1,13 +1,25 @@
-[gd_scene load_steps=3 format=3 uid="uid://2rkc5e2y100g"]
+[gd_scene load_steps=5 format=3 uid="uid://2rkc5e2y100g"]
+
+[ext_resource type="Script" uid="uid://b0qlbxll2g631" path="res://Player/player.gd" id="1_3qydi"]
+[ext_resource type="Script" uid="uid://bujggnkinru42" path="res://Player/smooth_camera.gd" id="2_q3lat"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_l2ndj"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_3qydi"]
 
 [node name="Player" type="CharacterBody3D"]
+script = ExtResource("1_3qydi")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("CapsuleMesh_l2ndj")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_3qydi")
+
+[node name="CameraPivot" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3, 0)
+
+[node name="SmoothCamera" type="Camera3D" parent="CameraPivot"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3, 0)
+top_level = true
+script = ExtResource("2_q3lat")
